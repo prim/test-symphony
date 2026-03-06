@@ -1,0 +1,13 @@
+## Summary
+Implemented a new `greet(name: str) -> str` function in `greet.py` that returns a greeting in the required format, and added focused pytest coverage for the expected basic, empty-string, and Chinese-name cases.
+
+## Changes
+- greet.py: Added the `greet` function returning `"Hello, {name}!"`
+- test_greet.py: Added three pytest test cases covering normal, empty, and Chinese input
+
+## Testing
+- `make test`
+- `pytest test_greet.py -v`
+
+## Notes
+Assumed the requested scope is limited to creating the new module and its direct tests. No extra input validation was added because the issue explicitly specifies `name: str` and the expected output format for the provided cases.
