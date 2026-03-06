@@ -84,6 +84,37 @@ class CliTests(unittest.TestCase):
                 [str(first) + ":", "apple.txt", "", str(second) + ":", "banana.txt"],
             )
 
+    def test_cli_lists_file_arguments_without_headers(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            nested = root / "nested"
+            nested.mkdir()
+            target = nested / "item.txt"
+            target.write_text("content", encoding="utf-8")
+
+            result = self.run_ls(str(target))
+
+            self.assertEqual(result.returncode, 0)
+            self.assertEqual(result.stdout.splitlines(), [str(target)])
+            self.assertEqual(result.stderr, "")
+
+    def test_cli_lists_files_before_directories(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            target = root / "item.txt"
+            folder = root / "folder"
+            target.write_text("content", encoding="utf-8")
+            folder.mkdir()
+            (folder / "child.txt").write_text("child", encoding="utf-8")
+
+            result = self.run_ls(str(target), str(folder))
+
+            self.assertEqual(result.returncode, 0)
+            self.assertEqual(
+                result.stdout.splitlines(),
+                [str(target), "", str(folder) + ":", "child.txt"],
+            )
+
     def test_cli_reports_missing_path(self) -> None:
         result = self.run_ls("does-not-exist")
 

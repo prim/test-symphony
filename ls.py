@@ -46,21 +46,35 @@ def write_listing(
     stderr: TextIO,
 ) -> int:
     exit_code = 0
-    show_headers = len(raw_paths) > 1
+    file_entries: list[str] = []
+    directory_listings: list[tuple[str, list[str]]] = []
 
-    for index, raw_path in enumerate(raw_paths):
+    for raw_path in raw_paths:
         path = Path(raw_path)
 
-        try:
-            entries = list_path(path, include_hidden=include_hidden)
-        except FileNotFoundError:
-            print(f"ls.py: cannot access '{raw_path}': No such file or directory", file=stderr)
-            exit_code = 1
+        if path.is_dir():
+            directory_listings.append(
+                (raw_path, list_path(path, include_hidden=include_hidden))
+            )
             continue
 
+        if path.exists():
+            file_entries.append(raw_path)
+            continue
+
+        print(f"ls.py: cannot access '{raw_path}': No such file or directory", file=stderr)
+        exit_code = 1
+
+    for entry in file_entries:
+        print(entry, file=stdout)
+
+    show_headers = len(raw_paths) > 1
+
+    for index, (raw_path, entries) in enumerate(directory_listings):
+        if file_entries or index:
+            print(file=stdout)
+
         if show_headers:
-            if index:
-                print(file=stdout)
             print(f"{raw_path}:", file=stdout)
 
         for entry in entries:
