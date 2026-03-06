@@ -1,2 +1,2 @@
-DONE
-Implemented Issue #45 by adding `subtract.py`, tests, dev report, and committing the changes.
+PASS
+QA verification passed for issue #45. `subtract.py` correctly implements `subtract(a, b) = a - b`, unit tests pass, and manual spot checks succeeded.
