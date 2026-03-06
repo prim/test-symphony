@@ -55,9 +55,17 @@ def test_lists_multiple_targets_with_directory_headers(tmp_path: Path) -> None:
     assert result.stderr == ""
 
 
+def test_empty_directory_produces_no_output(tmp_path: Path) -> None:
+    result = run_ls(cwd=tmp_path)
+
+    assert result.returncode == 0
+    assert result.stdout == ""
+    assert result.stderr == ""
+
+
 def test_missing_path_returns_error(tmp_path: Path) -> None:
     result = run_ls("missing.txt", cwd=tmp_path)
 
     assert result.returncode == 1
     assert result.stdout == ""
-    assert "cannot access 'missing.txt'" in result.stderr
+    assert result.stderr == "ls.py: cannot access 'missing.txt': No such file or directory\n"

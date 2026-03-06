@@ -46,20 +46,25 @@ def render_targets(paths: Sequence[str], show_all: bool, err: TextIO) -> int:
         try:
             if path.is_dir():
                 entries = list_directory(path, show_all)
-                sections.append(render_directory(raw_path, entries, show_headers))
+                section = render_directory(raw_path, entries, show_headers)
+                if section:
+                    sections.append(section)
                 continue
 
             if os.path.lexists(raw_path):
                 sections.append(raw_path)
                 continue
 
-            raise FileNotFoundError(f"No such file or directory: '{raw_path}'")
+            raise FileNotFoundError
         except OSError as exc:
-            print(f"ls.py: cannot access '{raw_path}': {exc.strerror or str(exc)}", file=err)
+            message = "No such file or directory" if isinstance(exc, FileNotFoundError) else exc.strerror or str(exc)
+            print(f"ls.py: cannot access '{raw_path}': {message}", file=err)
             exit_code = 1
 
-    if sections:
-        print("\n\n".join(sections))
+    output = "\n\n".join(sections)
+    if output:
+        sys.stdout.write(output)
+        sys.stdout.write("\n")
 
     return exit_code
 
