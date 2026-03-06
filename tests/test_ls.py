@@ -55,6 +55,19 @@ def test_lists_multiple_targets_with_directory_headers(tmp_path: Path) -> None:
     assert result.stderr == ""
 
 
+def test_lists_multiple_files_without_blank_lines(tmp_path: Path) -> None:
+    first_file = tmp_path / "alpha.txt"
+    second_file = tmp_path / "beta.txt"
+    first_file.write_text("alpha", encoding="utf-8")
+    second_file.write_text("beta", encoding="utf-8")
+
+    result = run_ls(str(first_file), str(second_file), cwd=tmp_path)
+
+    assert result.returncode == 0
+    assert result.stdout == f"{first_file}\n{second_file}\n"
+    assert result.stderr == ""
+
+
 def test_empty_directory_produces_no_output(tmp_path: Path) -> None:
     result = run_ls(cwd=tmp_path)
 

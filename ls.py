@@ -35,9 +35,27 @@ def render_directory(label: str, entries: Iterable[str], show_header: bool) -> s
     return f"{label}:"
 
 
+def render_sections(sections: Sequence[tuple[str, str]]) -> str:
+    parts: list[str] = []
+    previous_kind: str | None = None
+
+    for kind, content in sections:
+        if not content:
+            continue
+
+        if parts:
+            separator = "\n" if kind == "file" and previous_kind == "file" else "\n\n"
+            parts.append(separator)
+
+        parts.append(content)
+        previous_kind = kind
+
+    return "".join(parts)
+
+
 def render_targets(paths: Sequence[str], show_all: bool, err: TextIO) -> int:
     show_headers = len(paths) > 1
-    sections: list[str] = []
+    sections: list[tuple[str, str]] = []
     exit_code = 0
 
     for raw_path in paths:
@@ -48,11 +66,11 @@ def render_targets(paths: Sequence[str], show_all: bool, err: TextIO) -> int:
                 entries = list_directory(path, show_all)
                 section = render_directory(raw_path, entries, show_headers)
                 if section:
-                    sections.append(section)
+                    sections.append(("directory", section))
                 continue
 
             if os.path.lexists(raw_path):
-                sections.append(raw_path)
+                sections.append(("file", raw_path))
                 continue
 
             raise FileNotFoundError
@@ -61,7 +79,7 @@ def render_targets(paths: Sequence[str], show_all: bool, err: TextIO) -> int:
             print(f"ls.py: cannot access '{raw_path}': {message}", file=err)
             exit_code = 1
 
-    output = "\n\n".join(sections)
+    output = render_sections(sections)
     if output:
         sys.stdout.write(output)
         sys.stdout.write("\n")
