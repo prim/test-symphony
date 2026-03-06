@@ -1,0 +1,2 @@
+DONE
+Implemented issue #38 by adding `hello.py`, adding an automated unittest, updating `make test` to run the new test, and writing the required development reports.

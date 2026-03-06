@@ -1,0 +1,10 @@
+## Summary
+Implemented `hello.py` so it prints `Hello from OpenCode!` when run with Python, and added a simple automated test for the script output.
+
+## Changes
+- hello.py: added a small executable script with a `main()` entrypoint
+- tests/test_hello.py: added a unittest that runs the script and checks stdout
+
+## Testing
+- `python3 -m unittest discover -s tests -p 'test_*.py'`
+- `make test`
