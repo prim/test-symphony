@@ -1,0 +1,13 @@
+## Summary
+Implemented `word_counter.py` with a `count_words(text: str) -> dict[str, int]` function that validates input types, removes the required punctuation, normalizes case, supports multiline text, and returns per-word counts.
+
+## Changes
+- `word_counter.py`: added the production implementation for word counting.
+- `test_word_counter.py`: added 10 pytest cases covering case insensitivity, punctuation stripping, multiline input, empty strings, whitespace-only text, and `TypeError` handling for non-string inputs.
+
+## Testing
+- Run `pytest test_word_counter.py`
+- Run `make test`
+
+## Notes
+Assumed that “引号” includes both single quotes and double quotes, so both are stripped during normalization. Whitespace-only strings return an empty dictionary because they contain no words after splitting.
