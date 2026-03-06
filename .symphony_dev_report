@@ -1,0 +1,11 @@
+## Summary
+Implemented `divide.py` with a `divide(a, b)` helper that returns the quotient and raises `ZeroDivisionError` when the divisor is zero.
+
+## Changes
+- divide.py: added the division function with zero-division handling
+- tests/test_divide.py: added unit tests for normal division, float output, and zero divisor error
+- dev-log/dev-report.md: added development report and validation notes
+
+## Testing
+- `python3 -m unittest discover -s tests -p 'test*.py'`
+- `make test`

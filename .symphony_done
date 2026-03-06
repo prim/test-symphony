@@ -1,0 +1,2 @@
+DONE
+Implemented issue #42 by adding `divide.py`, tests, and development reports. Unit tests and existing Makefile test passed.
