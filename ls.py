@@ -23,7 +23,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def list_directory(path: Path, show_all: bool) -> list[str]:
     names = [entry.name for entry in path.iterdir() if show_all or not entry.name.startswith(".")]
-    return sorted(names)
+    names = sorted(names)
+
+    if show_all:
+        return [".", "..", *names]
+
+    return names
 
 
 def render_directory(label: str, entries: Iterable[str], show_header: bool) -> str:

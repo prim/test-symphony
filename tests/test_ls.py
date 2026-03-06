@@ -37,7 +37,19 @@ def test_all_flag_includes_hidden_entries(tmp_path: Path) -> None:
     result = run_ls("-a", cwd=tmp_path)
 
     assert result.returncode == 0
-    assert result.stdout.splitlines() == [".hidden.txt", "visible.txt"]
+    assert result.stdout.splitlines() == [".", "..", ".hidden.txt", "visible.txt"]
+    assert result.stderr == ""
+
+
+def test_all_flag_includes_dot_entries_for_explicit_directory(tmp_path: Path) -> None:
+    target_dir = tmp_path / "docs"
+    target_dir.mkdir()
+    (target_dir / "guide.md").write_text("guide", encoding="utf-8")
+
+    result = run_ls("-a", str(target_dir), cwd=tmp_path)
+
+    assert result.returncode == 0
+    assert result.stdout.splitlines() == [".", "..", "guide.md"]
     assert result.stderr == ""
 
 
