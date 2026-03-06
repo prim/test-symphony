@@ -1,0 +1,9 @@
+## Summary
+Implemented `subtract.py` with a `subtract(a, b)` function that returns `a - b`, and added unit tests for core subtraction cases.
+
+## Changes
+- subtract.py: added the subtract function
+- test_subtract.py: added unittest coverage for positive, negative, and zero subtraction scenarios
+
+## Testing
+Run `python3 -m unittest test_subtract.py`
