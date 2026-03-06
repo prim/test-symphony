@@ -1,0 +1,6 @@
+PASS
+QA verification passed for issue #38.
+
+- Confirmed `hello.py` prints `Hello from OpenCode!`.
+- Confirmed automated test coverage in `tests/test_hello.py`.
+- Confirmed `make test` passes.
