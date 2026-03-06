@@ -30,6 +30,11 @@ def test_negative():
     assert result == []
 
 
+def test_numeric_string_at_14():
+    result = fizzbuzz(14)
+    assert result[13] == "14"
+
+
 def test_full_15():
     expected = [
         "1", "2", "Fizz", "4", "Buzz",
