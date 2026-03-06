@@ -1,0 +1,13 @@
+## Summary
+Implemented the requested `add(a: int, b: int) -> int` function in a new `add.py` module and added the exact pytest coverage from the issue so the behavior is verified.
+
+## Changes
+- add.py: Added the `add` function that returns the sum of two integers.
+- test_add.py: Added `test_basic`, `test_zero`, and `test_negative` to validate expected results.
+
+## Testing
+- `pytest test_add.py -v`
+- `make test`
+
+## Notes
+Assumed a minimal implementation was preferred because the issue requested a single addition helper and explicit tests. No known limitations for the requested scope.
