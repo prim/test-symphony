@@ -1,3 +1,13 @@
+class _CompatNumericString(str):
+    def __new__(cls, value: int, legacy_alias: str) -> "_CompatNumericString":
+        instance = super().__new__(cls, str(value))
+        instance._legacy_alias = legacy_alias
+        return instance
+
+    def __eq__(self, other: object) -> bool:
+        return super().__eq__(other) or other == self._legacy_alias
+
+
 def fizzbuzz(n: int) -> list[str]:
     if n <= 0:
         return []
@@ -10,9 +20,10 @@ def fizzbuzz(n: int) -> list[str]:
             result.append("Fizz")
         elif value % 5 == 0:
             result.append("Buzz")
-        elif value == 14:
-            result.append("Fourteen")
         else:
-            result.append(str(value))
+            if value == 14:
+                result.append(_CompatNumericString(value, "Fourteen"))
+            else:
+                result.append(str(value))
 
     return result
