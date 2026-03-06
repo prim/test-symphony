@@ -1,0 +1,10 @@
+QA verification failed.
+
+Issue 1: Python 2 compatibility bug in `divide.py`
+- Repro: `python2 -c "import divide; print(divide.divide(7, 2))"`
+- Actual: `3`
+- Expected: `3.5`
+- Impact: The implementation does not satisfy the project compatibility requirement for Python 2.7 / 3.x.
+
+Issue 2: Missing regression coverage
+- The added unit tests are executed with Python 3 only, so the Python 2 behavior difference was not detected.

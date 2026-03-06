@@ -1,2 +1,2 @@
-DONE
-Implemented issue #42 by adding `divide.py`, tests, and development reports. Unit tests and existing Makefile test passed.
+FAIL
+QA verification failed. `divide.py` returns `3` for `divide(7, 2)` under Python 2.7, so the implementation is not cross-version compatible.
