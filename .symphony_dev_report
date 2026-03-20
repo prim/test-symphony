@@ -1,0 +1,11 @@
+## Summary
+Implemented `multiply.py` with a `multiply(a, b)` helper that returns the product, and added unit tests for core numeric cases.
+
+## Changes
+- `multiply.py`: added the multiply function.
+- `test_multiply.py`: added unittest coverage for positive, zero, and negative inputs.
+- `dev-log/plan.md`: added a minimal task plan and marked items complete.
+- `dev-log/dev-report.md`: added development report and test results.
+
+## Testing
+Verified with `python3 -m unittest`.

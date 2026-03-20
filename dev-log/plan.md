@@ -1,0 +1,4 @@
+- [x] Task 1: 创建 `multiply.py`，实现 `multiply(a, b)` 返回乘积。
+- [x] Task 2: 添加基础单元测试，覆盖整数、零和负数场景。
+- [x] Task 3: 运行测试并记录结果。
+- [x] Task 4: 编写开发报告。
