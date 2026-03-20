@@ -1,0 +1,2 @@
+PASS
+QA verification passed for issue #45. `subtract.py` correctly implements `subtract(a, b) = a - b`, unit tests pass, and manual spot checks succeeded.

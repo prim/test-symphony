@@ -1,0 +1,10 @@
+## QA Result: PASS
+
+## Findings
+- `subtract.py` defines `subtract(a, b)` and returns `a - b` as required.
+- `python3 -m unittest test_subtract.py` passes, covering positive, negative-result, and zero subtraction scenarios.
+- Manual spot checks for integer inputs (`10-4`, `-3-(-5)`, `0-0`) produced correct results.
+
+## Test Results
+- Automated: `python3 -m unittest test_subtract.py` → PASS (Ran 3 tests, OK)
+- Manual: `python3 -c "from subtract import subtract; print(subtract(10, 4)); print(subtract(-3, -5)); print(subtract(0, 0))"` → outputs `6`, `2`, `0`
