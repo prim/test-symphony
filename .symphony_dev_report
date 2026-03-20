@@ -1,0 +1,11 @@
+## Summary
+Implemented a simple greeting module with greeting and farewell helpers, plus unit tests for both functions.
+
+## Changes
+- greet.py: added greet(name) and farewell(name)
+- test_greet.py: added unittest coverage for both functions
+- dev-log/dev-report.md: documented implementation and verification
+
+## Testing
+- python3 -m unittest test_greet.py
+- make test
