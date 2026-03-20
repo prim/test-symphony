@@ -1,0 +1,10 @@
+## QA Result: FAIL
+
+## Findings
+- `divide(a, b)` is not compatible with Python 2 integer-division semantics. Running `python2 -c "import divide; print(divide.divide(7, 2))"` returns `3`, but the expected mathematical division result is `3.5`.
+- Current automated tests only run under Python 3 and therefore miss the Python 2 compatibility regression.
+
+## Test Results
+- PASS: `python3 -m unittest discover -s tests -p 'test*.py'`
+- PASS: `make test`
+- FAIL: `python2 -c "import divide; print(divide.divide(7, 2))"` produced `3` instead of `3.5`

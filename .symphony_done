@@ -1,0 +1,2 @@
+FAIL
+QA verification failed. `divide.py` returns `3` for `divide(7, 2)` under Python 2.7, so the implementation is not cross-version compatible.
