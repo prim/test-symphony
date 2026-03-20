@@ -1,0 +1,14 @@
+## Summary
+Implemented `hello.py` so running it prints `Hello Symphony`, and added an automated test to verify the script output matches exactly.
+
+## Changes
+- hello.py: Added a small executable Python entry point that prints `Hello Symphony`
+- test_hello.py: Added a `unittest` test that runs the script in a subprocess and checks stdout/stderr
+
+## Testing
+- `make test`
+- `python3 -m unittest -q`
+- `python3 hello.py`
+
+## Notes
+Used Python's built-in `unittest` framework to avoid introducing any new dependencies. No known limitations for the requested scope.
