@@ -1,0 +1,2 @@
+PASS
+QA verified issue #44. add.py defines add(a, b) and the automated tests passed.

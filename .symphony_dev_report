@@ -1,0 +1,10 @@
+## Summary
+Implemented `add.py` with an `add(a, b)` helper that returns the sum of its arguments.
+
+## Changes
+- add.py: added the `add(a, b)` function
+- test_add.py: added unit tests for integer, mixed-sign, and float addition
+
+## Testing
+- Run `python3 -m unittest`
+- Run `make test`

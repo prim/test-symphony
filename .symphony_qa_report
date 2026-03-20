@@ -1,0 +1,11 @@
+## QA Result: PASS
+
+## Findings
+- `add.py` defines `add(a, b)` and returns `a + b` as required.
+- `test_add.py` covers integer, mixed-sign, and float addition scenarios.
+- `python3 -m unittest` passed (3 tests).
+- `make test` completed successfully.
+
+## Test Results
+- `python3 -m unittest`: PASS
+- `make test`: PASS
