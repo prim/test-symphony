@@ -1,0 +1,11 @@
+## QA Result: PASS
+
+## Findings
+- Verified `hello.py` exists and prints the exact expected output `Hello from OpenCode!` when executed with `python3 hello.py`.
+- Verified automated coverage via `tests/test_hello.py`, which runs the script and asserts exact stdout including the trailing newline.
+- Verified `make test` includes and passes the new unittest alongside the repository's existing checks.
+
+## Test Results
+- `python3 hello.py` → PASS (`Hello from OpenCode!`)
+- `python3 -m unittest discover -s tests -p 'test_*.py'` → PASS (`Ran 1 test`, `OK`)
+- `make test` → PASS
